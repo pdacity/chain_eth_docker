@@ -1,0 +1,21 @@
+version: '2.4'
+
+services:
+  geth:
+    image: etclabscore/core-geth
+    container_name: chain-eth-02
+    command: "--http --http.corsdomain * --http.api eth,web3,personal,net,txpool,admin --http.addr 0.0.0.0 --ws --ws.port 3334 --ws.addr 0.0.0.0 --ws.origins * --ws.api eth,web3,personal,net,txpool --allow-insecure-unlock --syncmode snap --nousb --maxpeers 108 --cache 8192" 
+    volumes:
+      - $PWD/eth-data:/root
+    ports:
+      - 3334:3334
+      - 8545:8545
+    restart: always
+    cpu_shares: 750
+    mem_limit: 12g
+    memswap_limit: 1g
+
+
+
+
+
